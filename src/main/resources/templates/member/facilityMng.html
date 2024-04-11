@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{member/layout/layout}">
+
+<head>
+    <link href="/css/facilityMng.css" rel="stylesheet">
+</head>
+
+<body>
+
+
+<div layout:fragment="content">
+
+    <th:block layout:fragment="script">
+        <script th:inline="javascript">
+        $(document).ready(function(){
+        /*
+            $("#searchBtn").on("click", function(e){
+                e.preventDefault();
+                page(0);
+            });
+            */
+        });
+        function page(page){
+            var searchBy = $("#searchBy").val();
+            var searchQuery = $("#searchQuery").val();
+
+            location.href = "/facility/facilities/" + page +
+                               "&searchBy=" + searchBy +
+                               "&searchQuery=" + searchQuery +
+                               "&test=true";
+        }
+    </script>
+    </th:block>
+
+    <div class="container justify-content-center">
+<!--        container_dk_fac_mng-->
+          <div class="card_dk_fac_mng" th:each="facility, status: ${facilities.getContent()}" style="width: 24rem;">
+              <div class="card-body-dk_fac_mng">
+                  <div class="img_center_dk_fac_mng">
+                     <img src="/img/gym.jpg" class="card-img-top-dk-fac-mng">
+                  </div>
+                  <ul class="ul_dk_fac_mng">
+                      <span class="ul_span_dk_fac_mng">CODE</span>
+                      <label class="form-label" th:for="facilityId"
+                          th:href="'/facility/facility/'+${facility.facilityId}"
+                          th:text="${facility.facilityId}">이용권아이디</label>
+
+                      <li>
+                          <span class="ul_span_dk_fac_mng">종류</span>
+                          <label th:for="facilityNm" th:text="${facility.facilityNm}"></label>
+                      </li> <!--이용권이름-->
+
+                      <li>
+                          <span class="ul_span_dk_fac_mng">금액</span>
+                          <label th:for="facilityPrice" th:text="${facility.facilityPrice}"></label>
+                      </li> <!--이용권가격-->
+
+                      <li>
+                          <span class="ul_span_dk_fac_mng">횟수</span>
+                          <label th:for="entranceNo" th:text="${facility.entranceNo}"></label>
+                      </li><!--이용횟수-->
+
+                      <li>
+                          <span class="ul_span_dk_fac_mng">기간</span>
+                          <label th:for="facilityTerm" th:text="${facility.facilityTerm}"></label>
+                      </li><!--이용기간-->
+                  </ul>
+              </div>
+
+              <div class="card-body-dk2-fac-mng">
+                  <a th:href="'/facility/admin/'+${facility.facilityId}" class="card-link-dk-fac-mng" type="submit">수정</a>
+              </div>
+
+          </div>
+    </div>
+    <footer class="fixed_bottom">
+
+        <form aria-label="Page navigation example" th:action="@{'facilities'}" method="get" th:object="${facilitySearchDto}">
+            <div class=" form-inline input-group mb-3 justify-content-center">
+                <select th:field="*{searchBy}" class="form_control">
+                    <option value="facilityNm">이용권이름</option>
+                    <option value="facilityClCd">이용권코드</option>
+                </select>
+                <input th:field="*{searchQuery}" type="text" class="form-control_2" placeholder="검색어를 입력하세요">
+                <button id="searchBtn" type="submit" class="btn btn-light">검색</button>
+            </div>
+        </form>
+
+        <nav aria-label="Page navigation example" th:action="@{'facilities'}"
+             method="get" th:object="${facilitySearchDto}">
+
+            <div th:with="start=${(facilities.number/maxPage)*maxPage+1},
+    end=(
+    ${(facilities.totalPages == 0) ? 1:
+     (start+(maxPage - 1) < facilities.totalPages ? start+(maxPage - 1) : facilities.totalPages)
+     })">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <a class="page-link" aria-hidden="true">Previous</a>
+                    </li>
+                    <li class="page-member"
+                        th:each="page: ${#numbers.sequence(start, end)}"
+                        th:classappend="${facilities.number eq page-1} ? 'active' : '' ">
+                        <a th:onclick="'javascript:page(' + ${page-1} + ')' "
+                           th:inline="text" class="page-link" href="#">[[${page}]]</a></li>
+                    <li class="page-member" th:classappend="${facilities.last}?'disabled'">
+                        <a th:onclick="'javascript:page(' + ${facilities.number+1} +')'"
+                           aria-label="Next" class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </footer>
+
+
+</div>
+</body>
+</html>

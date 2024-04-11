@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ko" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <title>users_new</title>
+
+  <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet">
+  <link href="https://getbootstrap.kr/docs/5.3/examples/checkout/" rel="canonical">
+  <link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+
+  <meta content="#712cf9" name="theme-color">
+
+  <!-- Custom styles for this template -->
+  <!--    <link href="/checkout.css" rel="stylesheet">-->
+  <link href="/css/test_join.css" rel="stylesheet">
+  <!-- <link href="/css/memberForm.css" rel="stylesheet"> -->
+
+</head>
+
+<!--
+ 사용자 스크립트 추가.
+<th:block layout:fragment="script">
+
+    <script th:inline="javascript">
+        $(document).ready(function(){
+            var errorMessage = [[${errorMessage}]];
+            if(errorMessage != null){
+                alert(errorMessage);
+            }
+        });
+
+    </script>
+
+    <div th:if="${errorMessage}" class="alert alert-danger">
+        <p th:text="${errorMessage}"></p>
+    </div>
+여기까지는 그냥 써놓은것
+-->
+
+
+<div layout:fragment="content">
+
+  <body class="bg-body-tertiary">
+
+  <div class="container">
+
+    <main>
+      <div class="py-5 text-center">
+
+        <br><br>
+        <h2>회원가입</h2>
+
+      </div>
+
+      <div class="col-md-7 col-lg-8">
+
+        <form action="/users/new-page" class="needs-validation" method="POST" th:object="${userFormDto}">
+
+          <div class="row g-3">
+
+            <div class="col-sm-6">
+              <label class="form-label" th:for="userPassword">패스워드</label>
+              <input class="form-control" id="userPassword" placeholder="비밀번호를 입력하세요" required
+                     th:field="*{userPassword}" type="password">
+              <div class="invalid-feedback">
+                Valid password is required.
+              </div>
+            </div>
+
+
+            <div class="col-12">
+              <label class="form-label" th:for="userBirthDt">생년월일</label>
+              <div class="input-group has-validation">
+                <input class="form-control" id="userBirthDt" placeholder="2000-01-01" required
+                       th:field="*{userBirthDt}" type="date">
+                <div class="invalid-feedback">
+                  Your birthday is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label class="form-label" th:for="userCno">연락처</label>
+              <div class="input-group has-validation">
+                <input class="form-control" id="userCno" placeholder="010-1234-5678" required
+                       th:field="*{userCno}" type="tel">
+                <div class="invalid-feedback">
+                  Your contact is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label class="form-label" th:for="userAdr">주소</label>
+              <input class="form-control" id="userAdr" placeholder="세종시 나성동 ..." required
+                     th:field="*{userAdr}" type="text">
+              <div class="invalid-feedback">
+                Please enter your shipping address.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label class="form-label" th:for="userEmail">이메일
+                <span class="text-body-secondary">(Optional)</span>
+
+              </label>
+              <input class="form-control" id="" placeholder="you@example.com" th:field="*{userEmail}"
+                     type="email">
+              <div class="invalid-feedback">
+                Please enter a valid email address for shipping updates.
+              </div>
+            </div>
+
+          </div>
+
+          <div>
+
+            <button class="w-100 btn btn-primary btn-lg" th:formaction="@{/users/new-page}"
+                    type="submit" id="liveToastBtn" onclick="alert('회원가입되었습니다.')"> Join
+            </button>
+
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <footer class="my-5 pt-5 text-body-secondary text-center text-small" th:fragment="fragment">
+
+    </footer>
+  </div>
+
+  <script crossorigin="anonymous"
+          integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+          src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+  <script crossorigin="anonymous"
+          integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+
+  </body>
+</div>
+
+</html>
