@@ -1,0 +1,131 @@
+/* .test {
+    border: 1px solid red;
+}
+.test-f {
+    background: gray;
+} */
+
+
+/* .container {
+    display: flex;
+    margin: auto;
+} */
+
+.card {
+    margin: 20px;
+    padding: 5px;
+    margin-bottom: 50px;
+}
+
+.card img {
+    width: 150px;
+    align-self: center;
+    padding: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #323070;
+    font-weight: 700;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+
+/* // */
+
+/* .input-group {
+    width: 20%;
+} */
+/* .search {
+    height: 100%;
+}
+.card-1 {
+    display: flex;
+} */
+.search {
+    width: 100%;
+    padding: 20px;
+    margin: auto;
+    background: white;
+}
+.search::shadow{
+    background: #323070;
+}
+.bg-body-tertiary {
+    background-color: white;
+}
+.page-link {
+    color: #4D4BAD;
+    font-weight: 500;
+}
+/* li.page-item.disabled {
+    background: red;
+} */
+.pagination{
+    --bs-pagination-disabled-bg: #white;
+}
+.row {
+    margin: 50px;
+    padding-top: 10px;
+    justify-content: space-between;
+}
+.btn-light {
+    border: 1px solid rgba(128, 128, 128, 0.418);
+}
+li {
+    list-style: none;
+}
+.container {
+    display: flex;
+    max-width: 1000px;
+}
+.mb-3 {
+    background: white;
+    width: 400px;
+    margin: auto;
+}
+
+.btn-light {
+    border: 1px solid rgba(128, 128, 128, 0.418);
+}
+form {
+    padding-top: 10px;
+}
+.form-control_2 {
+    border: 1px solid gray;
+    padding: 5px;
+}
+.form_control {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+@media screen and (max-width: 768px) {
+    .container {
+        display: grid;
+        grid-template-columns: 600px;
+        grid-auto-rows: 400px;
+        padding-left: 0;
+        margin: 0;
+    }
+    .card {
+        border: none;
+        margin: auto;
+        padding-left: 0;
+    }
+    .card:nth-child(1){
+        padding-top: 80px;
+    }
+    .card:nth-child(3){
+        padding-bottom: 200px;
+    }
+    footer {
+        background: white;
+        border-top: 1px solid gray;
+    }
+}

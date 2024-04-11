@@ -1,0 +1,98 @@
+*{
+padding : 0;
+margin : 0;
+}
+.container_dk_fac_mng{
+    display : flex;
+}
+
+.card_dk_fac_mng{
+    margin: 20px;
+    padding: 20px 5px 5px 5px;
+    margin-bottom: 50px;
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+}
+
+.card-body-dk_fac_mng{
+    flex: 1 1 auto;
+    min-height: 1px;
+    text-align : left;
+}
+.card-body-dk_fac_mng .img_center_dk_fac_mng{
+    text-align : center;
+    margin : 0 auto;
+}
+
+.card-body-dk_fac_mng .ul_dk_fac_mng{
+    margin-top : 30px;
+    padding : 0px 10px 0px 10px;
+}
+
+.ul_dk_fac_mng .ul_span_dk_fac_mng{
+    float : left;
+    width : 30%;
+    color : #4D4BAD;
+}
+
+.ul_dk_fac_mng label{
+    width : 70%;
+    padding-left : 15%;
+}
+
+.card-img-top-dk-fac-mng{
+    text-align : center;
+    width: 150px;
+    padding: 10px;
+    border : 1px solid #323070;
+    border-radius : 50%;
+}
+
+.card-body-dk2-fac-mng{
+    text-align : right;
+    padding : 20px;
+}
+.card-link-dk-fac-mng{
+    text-decoration: none;
+    color: #323070;
+    font-weight: 700;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+
+li {
+    list-style: none;
+}
+
+.btn-light {
+    border: 1px solid rgba(128, 128, 128, 0.418);
+}
+form {
+    padding-top: 10px;
+}
+.form-control_2 {
+    border: 1px solid gray;
+    padding: 5px;
+}
+.form_control {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.container {
+    display: flex;
+}

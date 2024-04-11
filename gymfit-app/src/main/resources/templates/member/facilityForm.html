@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{member/layout/layout}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="/css/facilityForm.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container_dk_fac_form">
+        <form class="form_dk_fac_from" action="" method="POST" th:object="${facilityFormDto}">
+            <div class="img_dk_fac_form" th:if="${#strings.isEmpty(facilityFormDto.facilityId)}">
+                <img src="/img/gym.jpg" class="img_dk_fac_form_rec">
+                <p class="big_name_dk">이용권 등록</p>
+            </div>
+            <div class="img_dk_fac_form" th:unless="${#strings.isEmpty(facilityFormDto.facilityId)}">
+                <img src="/img/gym.jpg" class="img_dk_fac_form_rec">
+                <p class="big_name_dk">이용권 상세정보 수정</p>
+            </div>
+            <div class="form-group">
+                <label th:for="facilityClCd">이용권 코드 설정 </label>
+                <input type="number" th:field="*{facilityClCd}"
+                       class="form-control" placeholder="이용권 코드를 입력하세요">
+                <p th:if="${#fields.hasErrors('facilityClCd')}"
+                   th:errors="*{facilityClCd}" class="fieldError">부적절한 데이터</p>
+            </div>
+
+            <div class="form-group">
+                <label th:for="facilityNm">이용권 이름 </label>
+                <input type="text" th:field="*{facilityNm}"
+                       class="form-control" placeholder="이용권 이름을 입력하세요">
+                <p th:if="${#fields.hasErrors('facilityNm')}"
+                   th:errors="*{facilityNm}" class="fieldError">부적절한 데이터</p>
+            </div>
+
+            <div class="form-group">
+                <label th:for="facilityPrice">이용권 가격</label>
+                <input type="number" th:field="*{facilityPrice}"
+                       class="form-control" placeholder="시설 상품 가격을 입력하세요">
+                <p th:if="${#fields.hasErrors('facilityPrice')}"
+                   th:errors="*{facilityPrice}" class="fieldError">부적절한 데이터</p>
+            </div>
+
+            <div class="form-group">
+                <label th:for="entranceNo">이용권 횟수</label>
+                <input type="number" th:field="*{entranceNo}"
+                       class="form-control" placeholder="시설 이용 횟수를 입력하세요">
+                <p th:if="${#fields.hasErrors('entranceNo')}"
+                   th:errors="*{entranceNo}" class="fieldError">부적절한 데이터</p>
+            </div>
+            <div>
+                <label th:for="facilityTerm">이용권 기간</label>
+                <select th:field="*{facilityTerm}" class="form-control" style="width:auto">
+                    <option value="3d">1일</option>
+                    <option value="1w">1주</option>
+                    <option value="1m">1개월</option>
+                    <option value="6m">6개월</option>
+                    <option value="1y">1년</option>
+                </select>
+            </div>
+            <span th:if="${#strings.isEmpty(facilityFormDto.facilityId)}">
+                <button th:formaction="@{/facility/new}"
+                        type="submit" class="btn btn-primary">저장</button>
+            </span>
+
+            <span th:unless="${#strings.isEmpty(facilityFormDto.facilityId)}" >
+                <button th:formaction="@{'/facility/admin/'+ ${facilityFormDto.facilityId}}"
+                        type="submit" class="btn btn-primary">수정</button>
+            </span>
+            <span th:unless="${#strings.isEmpty(facilityFormDto.facilityId)}">
+                <button th:formaction="@{/facility/delete}"
+                        type="submit" class="btn btn-primary">삭제</button>
+            </span>
+        </form>
+        <footer class="my-5 pt-5 text-body-secondary text-center text-small" th:fragment="fragment">
+
+        </footer>
+    </div>
+</div>
+</body>
+</html>

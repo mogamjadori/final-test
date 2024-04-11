@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{member/layout/layout}">
+<head>
+    <link href="/css/memberDtoRes.css" rel="stylesheet">
+    <link href="/css/facilityMng.css" rel="stylesheet">
+</head>
+<body>
+<div layout:fragment="content">
+    <input type="hidden" id="facilityId" th:value="${facility.facilityId}">
+    <div class="d-flex">
+
+        <div class="wd50">
+
+            <div class="h4" th:text="${facility.facilityNm}">
+                이용권
+            </div>
+            <hr class="my-4">
+            <div>
+                <div class="h4 text-danger text-left">
+                    <input type="hidden" th:value="${facility.facilityClCd}" id="facilityClCd" name="facilityClCD">
+                      <span th:text="${facility.facilityClCd}"></span> : 이용권코드
+                </div>
+            </div>
+            <hr class="my-4">
+            <div>
+                <div class="h4 text-danger text-left">
+                    <input type="hidden" th:value="${facility.facilityPrice}" id="facilityPrice" name="facilityPrice">
+                   <span th:text="${facility.facilityPrice}"></span> : 가격
+                </div>
+            </div>
+            <hr class="my-4">
+            <div>
+                <div class="h4 text-danger text-left">
+                    <input type="hidden" th:value="${facility.entranceNo}" id="entranceNo" name="entranceNo">
+                    <span th:text="${facility.entranceNo}"></span> : 이용 횟수
+                </div>
+            </div>
+            <hr class="my-4">
+            <div>
+                <div class="h4 text-danger text-left">
+                    <input type="hidden" th:value="${facility.facilityTerm}" id="facilityTerm" name="facilityTerm">
+                    <span th:text="${facility.facilityTerm}"></span> 이용 기간
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
